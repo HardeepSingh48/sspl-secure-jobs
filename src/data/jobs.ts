@@ -321,6 +321,18 @@ export const cities = ["Delhi", "Gurgaon", "Noida", "Faridabad", "Ghaziabad"];
 export const jobTypes = ["Full-time", "Part-time", "Contract"];
 export const shifts = ["Day", "Night", "Rotational"];
 export const experienceLevels = ["Fresher", "0-1 years", "1-3 years", "3+ years"];
+export const jobCategories = [
+  "Security Guard",
+  "Watchman",
+  "Bouncer",
+  "CCTV Operator",
+  "Security Supervisor",
+  "Gate Keeper",
+  "Event Security",
+  "Armed Guard",
+  "Lady Security Guard",
+  "Patrol Officer"
+];
 
 export const stats = {
   activeJobs: 150,
