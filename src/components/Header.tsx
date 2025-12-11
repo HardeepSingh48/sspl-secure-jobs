@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Shield } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, X, Phone, Shield, ChevronDown, User, Briefcase, LogIn } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,11 +68,37 @@ const Header = () => {
             <Phone className="h-4 w-4" />
             <span className="text-sm font-medium">+91 1234567890</span>
           </a>
-          <Link to="/register">
-            <Button variant="cta" size="lg">
-              Register Now
+          
+          <Link to="/login">
+            <Button variant="ghost" size="sm" className="text-secondary-foreground hover:text-primary">
+              <LogIn className="h-4 w-4 mr-2" />
+              Login
             </Button>
           </Link>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="cta" size="lg">
+                Register Now
+                <ChevronDown className="h-4 w-4 ml-1" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56 bg-popover">
+              <DropdownMenuItem asChild>
+                <Link to="/register/jobseeker" className="flex items-center cursor-pointer">
+                  <User className="h-4 w-4 mr-2" />
+                  Register as Job Seeker
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link to="/register/employer" className="flex items-center cursor-pointer">
+                  <Briefcase className="h-4 w-4 mr-2" />
+                  Register as Employer
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         {/* Mobile Menu Button */}
@@ -96,10 +129,23 @@ const Header = () => {
                 {link.name}
               </Link>
             ))}
-            <div className="pt-4 border-t border-border/20 mt-2">
-              <Link to="/register" onClick={() => setIsMenuOpen(false)}>
+            <div className="pt-4 border-t border-border/20 mt-2 space-y-2">
+              <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                <Button variant="outline" size="lg" className="w-full text-secondary-foreground border-secondary-foreground/30">
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Login
+                </Button>
+              </Link>
+              <Link to="/register/jobseeker" onClick={() => setIsMenuOpen(false)}>
                 <Button variant="cta" size="lg" className="w-full">
-                  Register Now
+                  <User className="h-4 w-4 mr-2" />
+                  Register as Job Seeker
+                </Button>
+              </Link>
+              <Link to="/register/employer" onClick={() => setIsMenuOpen(false)}>
+                <Button variant="ctaSecondary" size="lg" className="w-full">
+                  <Briefcase className="h-4 w-4 mr-2" />
+                  Register as Employer
                 </Button>
               </Link>
             </div>
